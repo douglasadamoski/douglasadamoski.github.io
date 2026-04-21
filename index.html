@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Douglas Adamoski | Researcher</title>
+<style>
+  :root{
+    --bg:#f9f8f6;--surface:#fff;--primary:#1a3a5c;--accent:#2e7d9b;
+    --muted:#6b7280;--border:#e5e7eb;--text:#1f2937;
+    --font-serif:'Georgia',serif;--font-sans:'Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-sans);line-height:1.7}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;background:rgba(249,248,246,.95);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--border);
+    padding:.75rem 2rem;display:flex;align-items:center;justify-content:space-between}
+  nav .logo{font-family:var(--font-serif);font-weight:bold;color:var(--primary);font-size:1.05rem}
+  nav ul{list-style:none;display:flex;gap:1.75rem}
+  nav a{text-decoration:none;color:var(--muted);font-size:.9rem;transition:color .2s}
+  nav a:hover{color:var(--primary)}
+
+  /* HERO */
+  .hero{display:flex;align-items:center;gap:3rem;max-width:960px;margin:5rem auto 3rem;padding:0 2rem}
+  .hero-photo{width:170px;height:170px;border-radius:50%;object-fit:cover;
+    border:4px solid var(--accent);background:#d1e8f0;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--accent)}
+  .hero-text h1{font-family:var(--font-serif);font-size:2.2rem;color:var(--primary);line-height:1.2}
+  .hero-text .subtitle{color:var(--accent);font-size:1rem;margin:.4rem 0 .2rem;font-weight:600}
+  .hero-text .affil{color:var(--muted);font-size:.9rem;margin-bottom:1rem}
+  .hero-text p{font-size:.97rem;max-width:550px;color:#374151}
+  .links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.25rem}
+  .links a{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .85rem;
+    border:1.5px solid var(--border);border-radius:999px;font-size:.82rem;
+    text-decoration:none;color:var(--primary);background:var(--surface);
+    transition:background .2s,border-color .2s}
+  .links a:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+  .cv-btn{background:var(--primary)!important;color:#fff!important;border-color:var(--primary)!important}
+
+  /* SECTION WRAPPER */
+  section{max-width:960px;margin:0 auto;padding:3rem 2rem}
+  h2{font-family:var(--font-serif);font-size:1.6rem;color:var(--primary);
+    border-bottom:2px solid var(--accent);padding-bottom:.4rem;margin-bottom:1.75rem}
+
+  /* RESEARCH TOPICS */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    padding:1.4rem;transition:box-shadow .2s,transform .2s}
+  .card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
+  .card-icon{font-size:1.8rem;margin-bottom:.6rem}
+  .card h3{font-size:1rem;color:var(--primary);margin-bottom:.4rem}
+  .card p{font-size:.87rem;color:var(--muted)}
+
+  /* PUBLICATIONS */
+  .pub-list{display:flex;flex-direction:column;gap:1.25rem}
+  .pub{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    padding:1.3rem 1.5rem;display:flex;gap:1.25rem;align-items:flex-start}
+  .pub-badge{flex-shrink:0;padding:.25rem .7rem;border-radius:6px;
+    font-size:.72rem;font-weight:700;letter-spacing:.04em;white-space:nowrap;margin-top:.15rem}
+  .badge-ns{background:#dbeafe;color:#1e40af}
+  .badge-nc{background:#dcfce7;color:#166534}
+  .badge-other{background:#f3e8ff;color:#7e22ce}
+  .pub-body h3{font-size:.97rem;color:var(--primary);font-weight:600;margin-bottom:.25rem}
+  .pub-body .authors{font-size:.83rem;color:var(--muted);margin-bottom:.3rem}
+  .pub-body .journal{font-size:.83rem;color:#374151;font-style:italic}
+  .pub-body a{display:inline-block;margin-top:.5rem;font-size:.8rem;color:var(--accent);
+    text-decoration:none;border-bottom:1px solid transparent}
+  .pub-body a:hover{border-bottom-color:var(--accent)}
+
+  /* CV HIGHLIGHTS */
+  .timeline{display:flex;flex-direction:column;gap:1rem}
+  .titem{display:flex;gap:1.25rem}
+  .tyear{min-width:110px;font-size:.82rem;color:var(--muted);padding-top:.2rem;font-weight:600}
+  .tdesc h3{font-size:.97rem;color:var(--primary);font-weight:600}
+  .tdesc p{font-size:.85rem;color:var(--muted)}
+
+  /* CONTACT */
+  .contact-grid{display:flex;flex-wrap:wrap;gap:1rem}
+  .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    padding:1rem 1.4rem;flex:1;min-width:200px;text-align:center}
+  .contact-card .icon{font-size:1.4rem;margin-bottom:.3rem}
+  .contact-card a{color:var(--accent);text-decoration:none;font-size:.88rem}
+  .contact-card a:hover{text-decoration:underline}
+  .contact-card p{font-size:.8rem;color:var(--muted)}
+
+  /* FOOTER */
+  footer{text-align:center;padding:2rem;color:var(--muted);font-size:.8rem;
+    border-top:1px solid var(--border)}
+
+  @media(max-width:640px){
+    .hero{flex-direction:column;text-align:center}
+    .hero-photo{margin:0 auto}
+    .links{justify-content:center}
+    .pub{flex-direction:column}
+    nav ul{gap:1rem}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Douglas Adamoski</span>
+  <ul>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <!-- Replace src with your actual photo path, e.g. src="assets/photo.jpg" -->
+  <div class="hero-photo">👤</div>
+  <div class="hero-text">
+    <h1>Douglas Adamoski</h1>
+    <div class="subtitle">Postdoctoral Researcher</div>
+    <div class="affil">Max Planck Institute for Heart and Lung Research · Bad Nauheim, Germany</div>
+    <p>
+      Structural and molecular biologist working at the intersection of biochemistry, cell biology, and evolutionary genetics.
+      My research explores enzyme regulation through protein filamentation, metabolic reprogramming in cancer,
+      and genetic compensation via transcriptional adaptation in mitochondrial biology.
+    </p>
+    <div class="links">
+      <!-- Update hrefs to your actual profile URLs -->
+      <a href="https://scholar.google.com/citations?user=nFGGvawAAAAJ" target="_blank">📖 Google Scholar</a>
+      <a href="https://www.researchgate.net/profile/Douglas-Adamoski" target="_blank">🔬 ResearchGate</a>
+      <a href="https://orcid.org/0000-0001-5062-2586" target="_blank">🆔 ORCID</a>
+      <a href="https://github.com/YOUR_GITHUB" target="_blank">💻 GitHub</a>
+      <!-- Replace # with path to your CV PDF, e.g. assets/cv_adamoski.pdf -->
+      <a href="#" class="cv-btn" download>⬇ Download CV</a>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<section id="research">
+  <h2>Research Interests</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🧬</div>
+      <h3>Protein Filamentation & Enzyme Regulation</h3>
+      <p>Investigating how metabolic enzymes such as glutaminase (GLS) and cystathionine beta-synthase (CBS) form regulatory filaments, using cryo-EM and functional assays.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔬</div>
+      <h3>Cancer Metabolism</h3>
+      <p>Exploring how cancer cells exploit glutamine and glucose pathways, and how non-coding RNAs (e.g. CCAT2) rewire metabolic networks to support tumor growth.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🫀</div>
+      <h3>Mitochondrial Biology & Transcriptional Adaptation</h3>
+      <p>Current postdoctoral work: genetic compensation through transcriptional adaptation in nuclear genes governing mitochondrial morphology.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧫</div>
+      <h3>Structural & Functional Genomics</h3>
+      <p>Integrating genomics, transcriptomics, metabolomics, and structural biology to connect molecular architecture to cellular phenotypes.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">☀️</div>
+      <h3>UV Biology & Photobiology</h3>
+      <p>Characterizing differential cellular effects of far-UVC (222 nm) and near-UVC (254 nm) irradiation, with implications for safe disinfection technologies.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>RNA Quantification & Reproducibility</h3>
+      <p>Developing best practices for accurate and reproducible quantification of coding and non-coding RNAs in profiling and sequencing studies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <h2>Selected Publications</h2>
+  <p style="font-size:.87rem;color:var(--muted);margin-bottom:1.5rem">
+    42+ papers in international journals · 1,600+ citations · Full list on
+    <a href="https://scholar.google.com/citations?user=nFGGvawAAAAJ" target="_blank" style="color:var(--accent)">Google Scholar</a>
+  </p>
+  <div class="pub-list">
+
+    <div class="pub">
+      <span class="pub-badge badge-nc">Nat Commun</span>
+      <div class="pub-body">
+        <h3>Architecture and regulation of filamentous human cystathionine beta-synthase</h3>
+        <div class="authors">McCorvie TJ*, <strong>Adamoski D*</strong>, Machado RAC, Tang J, Bailey HJ, Ferreira DSM, … Dias SMG, Yue WW</div>
+        <div class="journal">Nature Communications, 15, 2931 (2024)</div>
+        <a href="https://doi.org/10.1038/s41467-024-46864-x" target="_blank">doi:10.1038/s41467-024-46864-x →</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <span class="pub-badge badge-ns">Nat Struct Mol Biol</span>
+      <div class="pub-body">
+        <h3>Molecular mechanism of glutaminase activation through filamentation and the role of filaments in mitophagy protection</h3>
+        <div class="authors"><strong>Adamoski D#</strong>, Meira Dias M#, Neciosup Quesñay JE#, Yang Z, Zagoriy I, … Mahamid J, Portugal RV, Ambrosio ALB, Dias SMG</div>
+        <div class="journal">Nature Structural & Molecular Biology, 30, 1902–1912 (2023)</div>
+        <a href="https://doi.org/10.1038/s41594-023-01118-0" target="_blank">doi:10.1038/s41594-023-01118-0 →</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <span class="pub-badge badge-other">lncRNA / Cancer</span>
+      <div class="pub-body">
+        <h3>CCAT2 long non-coding RNA regulates glucose and glutamine metabolism in cancer cells via altered energy metabolism</h3>
+        <div class="authors"><strong>Adamoski D</strong> et al., Dias SMG</div>
+        <div class="journal">Published in collaboration with CNPEM/LNBio</div>
+        <!-- Update with DOI/link when available -->
+        <a href="https://www.researchgate.net/profile/Douglas-Adamoski" target="_blank">View on ResearchGate →</a>
+      </div>
+    </div>
+
+    <div class="pub">
+      <span class="pub-badge badge-other">Microbial Ecol</span>
+      <div class="pub-body">
+        <h3>Morphological and genetic characterization of endophytic bacteria isolated from roots of different maize genotypes</h3>
+        <div class="authors">Ikeda AC, Bassani LL, <strong>Adamoski D</strong>, Stringari D, … Galli-Terasawa LV</div>
+        <div class="journal">Microbial Ecology, 65, 154–160 (2013)</div>
+        <a href="https://doi.org/10.1007/s00248-012-0104-0" target="_blank">doi:10.1007/s00248-012-0104-0 →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+  <h2>Curriculum Vitae</h2>
+  <div style="margin-bottom:2rem">
+    <a href="#" download style="display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1.2rem;
+      background:var(--primary);color:#fff;border-radius:8px;text-decoration:none;font-size:.9rem;
+      transition:background .2s" onmouseover="this.style.background='#2e7d9b'" onmouseout="this.style.background='var(--primary)'">
+      ⬇ Download Full CV (PDF)
+    </a>
+  </div>
+  <div class="timeline">
+    <div class="titem">
+      <div class="tyear">2024 – present</div>
+      <div class="tdesc">
+        <h3>Postdoctoral Researcher</h3>
+        <p>Max Planck Institute for Heart and Lung Research, Bad Nauheim, Germany<br>
+        Genetic compensation via transcriptional adaptation in mitochondrial genes</p>
+      </div>
+    </div>
+    <div class="titem">
+      <div class="tyear">2021 – 2024</div>
+      <div class="tdesc">
+        <h3>Researcher</h3>
+        <p>National Laboratory of Biosciences (LNBio / CNPEM), Campinas, Brazil</p>
+      </div>
+    </div>
+    <div class="titem">
+      <div class="tyear">2019 – 2021</div>
+      <div class="tdesc">
+        <h3>Substitute Professor – Dept. of Genetics</h3>
+        <p>Federal University of Paraná, Curitiba, Brazil<br>
+        Undergraduate & graduate teaching; participated in COVID-19 task force</p>
+      </div>
+    </div>
+    <div class="titem">
+      <div class="tyear">2018</div>
+      <div class="tdesc">
+        <h3>PhD in Genetics and Molecular Biology</h3>
+        <p>State University of Campinas (UNICAMP), Brazil<br>
+        Direct doctorate; cryo-EM, CRISPR/Cas9, genomics, transcriptomics, metabolomics</p>
+      </div>
+    </div>
+    <div class="titem">
+      <div class="tyear">2013</div>
+      <div class="tdesc">
+        <h3>BSc + Teaching Degree in Biological Sciences</h3>
+        <p>Federal University of Paraná (UFPR), Curitiba, Brazil</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact & Links</h2>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="icon">📧</div>
+      <p>Email</p>
+      <!-- Replace with your actual email -->
+      <a href="mailto:douglas.adamoski@mpi-bn.mpg.de">douglas.adamoski<br>@mpi-bn.mpg.de</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon">📖</div>
+      <p>Google Scholar</p>
+      <a href="https://scholar.google.com/citations?user=nFGGvawAAAAJ" target="_blank">View profile</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon">🔬</div>
+      <p>ResearchGate</p>
+      <a href="https://www.researchgate.net/profile/Douglas-Adamoski" target="_blank">View profile</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon">🆔</div>
+      <p>ORCID</p>
+      <a href="https://orcid.org/0000-0001-5062-2586" target="_blank">0000-0001-5062-2586</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon">💻</div>
+      <p>GitHub</p>
+      <!-- Replace YOUR_GITHUB with your actual handle -->
+      <a href="https://github.com/YOUR_GITHUB" target="_blank">github.com/YOUR_GITHUB</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon">💼</div>
+      <p>LinkedIn</p>
+      <a href="https://www.linkedin.com/in/douglas-adamoski-8158b6152/" target="_blank">View profile</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Douglas Adamoski · Built for GitHub Pages
+</footer>
+
+</body>
+</html>
