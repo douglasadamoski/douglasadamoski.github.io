@@ -285,8 +285,8 @@
     <div class="contact-card">
       <div class="icon">📧</div>
       <p>Email</p>
-      <!-- Replace with your actual email -->
-      <a href="mailto:douglas.adamoski@gmail.com">douglas.adamoski<br>@gmail.com</a>
+      <!-- Email is assembled by JS from a base64 blob so scrapers don't see a plain address -->
+      <a class="email-link" data-e="ZG91Z2xhcy5hZGFtb3NraUBnbWFpbC5jb20=" href="#" style="word-break:break-word">Show email</a>
     </div>
     <div class="contact-card">
       <div class="icon">📖</div>
@@ -320,6 +320,15 @@
 <footer>
   © 2026 Douglas Adamoski · Built for GitHub Pages
 </footer>
+
+<script>
+  // Decode base64-obfuscated email addresses at runtime to keep them out of the page source
+  document.querySelectorAll('.email-link').forEach(function(el){
+    var addr = atob(el.getAttribute('data-e'));
+    el.href = 'mailto:' + addr;
+    el.textContent = addr;
+  });
+</script>
 
 </body>
 </html>
