@@ -1,0 +1,9 @@
+# Only the published site lives in this repo. Build inputs, source material and
+# non-redistributable PDFs live in ../data_archive/ and must never be committed.
+.DS_Store
+__pycache__/
+*.pyc
+build/
+data/
+archive/
+*REVIEW_*.md
