@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Beating Heart AR — v0.2</title>
+  <script src="vendor/aframe.min.js"></script>
+  <script src="vendor/aframe-ar.min.js"></script>
+  <script src="heart.js"></script>
+  <style>
+    /* Prevent black background from ever obscuring the video feed */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: transparent !important;
+    }
+    video#arjs-video {
+      z-index: 0 !important;
+    }
+    .a-canvas {
+      z-index: 1 !important;
+    }
+  </style>
+</head>
+<body style="margin:0; background:transparent; overflow:hidden;">
+  <a-scene
+    embedded
+    arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+    renderer="alpha: true; antialias: true;"
+    vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false">
+
+    <!-- Camera with lighting so the heart looks 3D and shaded -->
+    <a-entity camera></a-entity>
+    <a-entity light="type: ambient; intensity: 0.75"></a-entity>
+    <a-entity light="type: directional; intensity: 1.2; position: 2 3 2"></a-entity>
+    <a-entity light="type: directional; intensity: 0.6; position: -2 1 -1"></a-entity>
+
+    <!-- The printed HIRO marker. Place the 10X heart on it. -->
+    <a-marker preset="hiro" id="marker">
+      <!-- 10X Sized Beating Heart (width 1.6 vs 0.16 in v0.1; 60% larger than Hiro marker) -->
+      <a-entity
+        heart="width: 1.60; depth: 0.72; beatsPerSec: 1.2"
+        position="0 0.95 0"
+        rotation="15 0 0">
+      </a-entity>
+    </a-marker>
+  </a-scene>
+
+  <!-- Overlay instructions (plain DOM, outside the WebGL scene, identical to v0.1) -->
+  <div id="overlay" style="position:fixed; top:10px; left:10px; background:rgba(0,0,0,0.65); color:white; padding:8px 12px; font-family:sans-serif; z-index:1000; border-radius:6px; font-size:13px; line-height:1.4;">
+    <strong>❤️ Beating Heart AR — v0.2 (10X Scale)</strong><br/>
+    Point the camera at the printed Hiro marker.<br/>Hold steady for the heart to appear.
+  </div>
+</body>
+</html>

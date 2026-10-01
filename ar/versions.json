@@ -1,0 +1,21 @@
+[
+ {
+  "version": "v0.3",
+  "entry": "heart-ar-v0.3.html",
+  "date": "2026-10-01",
+  "note": "Anatomical NIH 3D heart (atria then ventricles, X-ray, heart sounds). Fully offline, one self-contained file.",
+  "latest": true
+ },
+ {
+  "version": "v0.2",
+  "entry": "index.html",
+  "date": "2026-10-01",
+  "note": "Bigger heart, lub-dub timing. Needs internet (marker data from github.io)."
+ },
+ {
+  "version": "v0.1",
+  "entry": "index.html",
+  "date": "2026-10-01",
+  "note": "First prototype: extruded valentine heart. Needs internet (marker data from github.io)."
+ }
+]

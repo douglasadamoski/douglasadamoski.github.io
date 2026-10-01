@@ -1,5 +1,37 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Beating Heart AR</title>
-<meta http-equiv="refresh" content="0; url=heart-ar-v0.3.html">
-<a href="heart-ar-v0.3.html">Beating Heart AR v0.3</a> · <a href="markers/printable.html">printable marker</a>
+<style>
+  :root { --bg:#fafaf7; --fg:#14201c; --muted:#5b6b64; --accent:#0e7c66; --line:#dce5e0; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#14181a; --fg:#e8eeeb; --muted:#9fb0a8; --accent:#4cc2a4; --line:#2b3633; } }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width:720px; margin:0 auto; padding:40px 16px; }
+  h1 { margin:0 0 8px; font-size:30px; }
+  a { color:var(--accent); }
+  .go { display:inline-block; margin:18px 0 6px; padding:12px 20px; border-radius:8px; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; }
+  ul { list-style:none; padding:0; }
+  li { border-top:1px solid var(--line); padding:12px 0; }
+  li div { color:var(--muted); font-size:14px; }
+  .date { color:var(--muted); font-size:13px; margin-left:6px; }
+  .tag { font-size:11px; background:var(--accent); color:#fff; border-radius:999px; padding:1px 8px; margin-left:4px; }
+</style>
+</head>
+<body><main>
+<h1>Beating Heart AR</h1>
+<p>Point a phone, tablet or laptop camera at the printed Hiro marker and an anatomical
+heart beats on it. Runs in the browser, nothing to install.</p>
+<a class="go" href="heart-ar-latest.html">Open the latest version →</a>
+<p><a href="markers/printable.html">Printable marker sheet</a> (its QR code always opens the latest version)</p>
+<h2>All versions</h2>
+<ul>
+<li><a href="versions/v0.3/heart-ar-v0.3.html">v0.3</a> <span class="tag">latest</span> <span class="date">2026-10-01</span><div>Anatomical NIH 3D heart (atria then ventricles, X-ray, heart sounds). Fully offline, one self-contained file.</div></li>
+<li><a href="versions/v0.2/index.html">v0.2</a> <span class="date">2026-10-01</span><div>Bigger heart, lub-dub timing. Needs internet (marker data from github.io).</div></li>
+<li><a href="versions/v0.1/index.html">v0.1</a> <span class="date">2026-10-01</span><div>First prototype: extruded valentine heart. Needs internet (marker data from github.io).</div></li>
+</ul>
+<p style="color:var(--muted); font-size:13px">Licences: <a href="THIRD_PARTY_LICENSES.txt">THIRD_PARTY_LICENSES.txt</a>
+(also embedded in each HTML from v0.3 on).</p>
+</main></body>
+</html>
